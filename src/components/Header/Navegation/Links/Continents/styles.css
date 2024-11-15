@@ -1,0 +1,15 @@
+.main__article {
+    .main__art-sect {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+
+        div {
+            .country-flag {
+                width: 280px;
+                height: 150px;
+            }
+        }
+    }
+}
