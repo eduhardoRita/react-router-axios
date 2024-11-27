@@ -1,19 +1,17 @@
-import React from "react";
-import Logo from "../../assets/earth-logo.gif"
+import React, {useState} from "react";
+import Logo from "../../assets/car-logo.gif";
 import Navigation from "../Header/Navegation/Navigation";
-import "../Header/styles.css"
+import { HeaderStyle, MainImage, SectionHeader, Title } from "./styles";
 
-const Header = () => {
-  return (
-    <>
-      <header>
-        <section className="header__section">
-          <img src={Logo} />
-          <h1>Continentes del mundo y sus paises</h1>
-        </section>
-        <Navigation />
-      </header>
-    </>
+const Header = ({setSelectedContinentColor}) => {
+  return (  
+    <HeaderStyle>
+      <SectionHeader>
+        <MainImage src={Logo}/>
+        <Title>CONTINENTES DEL MUNDO Y SUS PAISES</Title>
+      </SectionHeader>
+      <Navigation setSelectedContinentColor={setSelectedContinentColor}/>
+    </HeaderStyle>
   );
 };
 

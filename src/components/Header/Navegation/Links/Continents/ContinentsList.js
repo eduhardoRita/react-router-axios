@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useAxios from "../../../../../hooks/useAxios";
-import "../Continents/styles.css"
+import { ContainerContinents, SubtitleContainer, ContainerContries, Contry, ContryFlag, ElementList, InformationList } from "./style";
 
 const ContinentsList = ({ continent }) => {
 
@@ -9,11 +9,11 @@ const ContinentsList = ({ continent }) => {
     const { response, error, loading } = useAxios(url);
 
     useEffect(() => {
-        if (continent) {
+        if (continent.name) {
             setUrl(continent.url);
             setSelectedContinent(continent);
         }
-    }, [continent]);
+    }, [continent.name]);
 
     const name = continent?.name;
 
@@ -21,33 +21,32 @@ const ContinentsList = ({ continent }) => {
     console.log('Error:', error);
     console.log('Loading:', loading);
 
-    
     if (loading) return <p>Cargando...</p>
     if (error) return <p>Error:{error.message}</p>
+
     return (
-        <article className="main__article">
-            <h2>Paises de: {name}</h2>
+        <ContainerContinents>
+            <SubtitleContainer>Paises: </SubtitleContainer>
             {response ? (
-                <section className="main__art-sect">
+                <ContainerContries>
                     {response.map((country) => (
-                        <div key={country.cca2} className="country-card">
-                            <img className="country-flag" src={country.flags.png} alt= {`Bandera de ${country.name.common}`}/>
-                            <ul>
-                                <li>Pais: {country.name.common}</li>
+                        <Contry key={country.cca2}>
+                            <ContryFlag src={country.flags.png} alt= {`Bandera de ${country.name.common}`}/>                            <InformationList>
+                                <ElementList>Pais: {country.name.common}</ElementList> 
                             {country.capital && (
-                                <li>Capital: {country.capital[0]}</li>
+                                <ElementList>Capital: {country.capital[0]}</ElementList> 
                             )}
-                                <li>Poblacion: {country.population}</li>
-                                <li>Lenguaje: {Object.values(country.languages)[0]}</li>
-                            </ul>
-                        </div>
+                                <ElementList>Poblacion: {country.population}</ElementList> 
+                                <ElementList>Lenguaje: {Object.values(country.languages)[0]}</ElementList>
+                            </InformationList>
+                        </Contry>
                     ))}
-                </section>    
+                </ContainerContries>
             ) : (
                 null
             )}
-        </article>
+        </ContainerContinents>
     );
 };
 
-export default ContinentsList;
+export default ContinentsList;
