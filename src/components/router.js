@@ -14,12 +14,12 @@ const Router = () => {
         element={<ContinentsList continent={{ name: "Africa", url: "https://restcountries.com/v3.1/region/africa" }} />}
       />
       <Route
-        path="/america"
-        element={<ContinentsList continent={{ name: "America", url: "https://restcountries.com/v3.1/region/america" }} />}
+        path="/north america"
+        element={<ContinentsList continent={{ name: "North America", url: "https://restcountries.com/v3.1/region/north america" }} />}
       />
       <Route
-        path="/antarctica"
-        element={<ContinentsList continent={{ name: "Antartida", url: "https://restcountries.com/v3.1/region/antarctica" }} />}
+        path="/south america"
+        element={<ContinentsList continent={{ name: "South America", url: "https://restcountries.com/v3.1/region/south america" }} />}
       />
       <Route
         path="/Europa"

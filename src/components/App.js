@@ -1,20 +1,15 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState} from 'react';
 import Header from './Header/Header';
 import Main from './Main/Main';
 import "./styles.css"
 
 function App() {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    navigate('/');
-  }, []);
+  const [selectedContinentColor, setSelectedContinentColor] = useState(null);
 
   return (
     <>
-      <Header />
-      <Main />    
+      <Header setSelectedContinentColor={setSelectedContinentColor}/>
+      <Main selectedContinentColor={selectedContinentColor}/>    
     </>
   );
 }
